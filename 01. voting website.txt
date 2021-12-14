@@ -1,0 +1,45 @@
+
+common auth (can reuse this code part)
+  - registration by email + activation by email
+  - login
+  - logout
+  - forgot password
+  - reset password (triggered during forgot password)
+
+- two users:
+  - voter (the one who votes, only 1 vote per person)
+  - creator (can vote once on any election they created, and can of course create election)
+
+- dashboard of voting + graphs (d3js)
+
+- reports (export to pdf or excel) LOCKED, need premium
+
+- create election
+    ~ single choice (checkbox to select only one)
+    ~ multi choice (checkbox to select two or more,
+        can set how many maximum choices... default to
+        at least 1 choice)
+    ~ ranked choice (order the appropriate rank,
+        rank points depends on position of order,
+        ideally used if wants to get the top n
+        in votes)
+    ~ instant runoff (merge votes until two remains
+        to determine the single winner...
+        undergoes automated rounds of voting)
+    ~ single transfer (useful for voting representative
+        of a committee, reallocation of votes...
+        undergoes automated rounds of voting)
+
+- share poll (share link)
+- public poll page (anyone can view)
+- private poll page (only invited voters can view) LOCKED, need premium
+
+
+- poll result options:
+    - show results after voting
+    - show results after election is over
+    - show current results
+
+- future: integration with stripe to purchase election with more than 30 voters, and also this enables exporting of reports AND creation of private polls
+
+lastly dockerize everything then deploy to heroku.

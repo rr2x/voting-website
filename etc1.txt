@@ -1,0 +1,39 @@
+Single Choice
+  - checkbox and select one candidate
+Ranked Choice
+  - rank canditates
+Instant Runoff
+  - eliminate last place candidate
+    and then distribute votes on each remaining
+  - loop until two remains to determine
+    the top vote
+Single Transfer
+    that will represent each group
+  - effective in voting for people from two or more groups
+
+    
+
+
+
+quota = floor(total votes / seats + 1) + 1
+
+
+23 / 4
+
+6 = votes quota
+
+
+12 - 6 = 6 to distribute
+
+6 = surplus
+
+ = (second preference of 1st/1st preference) * surplus
+ = 2nd preference of 1st = how many voted for 1st
+ = (8/12)*6
+ = 4 to strawberry
+
+ (4/12)*6 in favor of hamburger
+ = 2 to hamburger
+
+
+ 
