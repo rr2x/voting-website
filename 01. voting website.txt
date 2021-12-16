@@ -1,14 +1,16 @@
-
 common auth (can reuse this code part)
   - registration by email + activation by email
   - login
   - logout
   - forgot password
   - reset password (triggered during forgot password)
+  - hCaptcha integration (prevent bots)
 
 - two users:
-  - voter (the one who votes, only 1 vote per person)
-  - creator (can vote once on any election they created, and can of course create election)
+  //- voter (the one who votes, only 1 vote per person)
+  //- creator (can vote once on any election they created, and can of course create election)
+    => anyone can vote, anyone can crud an election
+
 
 - dashboard of voting + graphs (d3js)
 
