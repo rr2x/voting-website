@@ -4,13 +4,6 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User
 
-
-# current problem:
-# OperationalError at /admin/authentication/user/1/change/
-# no such table: authentication_user_groups
-
-# https://docs.djangoproject.com/en/4.0/topics/auth/customizing/
-
 class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
@@ -27,6 +20,24 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
+    list_display = ('email', 'is_verified', 'created_at',)
+    list_filter = ('email',)
 
-admin.site.unregister(Group)
+    fieldsets = (
+        (None, {'fields': ('email', 'password', 'is_verified')}),
+    )
+
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'password', 'is_verified'),
+        }),
+    )
+
+    search_fields = ('email',)
+    ordering = ('email',)
+    filter_horizontal = ()
+
+
 admin.site.register(User, UserAdmin)
+admin.site.unregister(Group)
