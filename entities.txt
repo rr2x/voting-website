@@ -12,7 +12,6 @@
 
 User
   *
-  username (only used internally, same as email?) = varchar
   email = varchar
   password = encrypted
   is_verified = boolean, email activation
@@ -24,12 +23,23 @@ Election
   *
   owner_id = User.id
   **
+  election_type = enum ('SINGLE_CHOICE', 'MULTI_CHOICE', 'RANKED_CHOICE', 'INSTANT_RUNOFF', 'SINGLE_TRANSFER')
+  result_type = enum ('CURRENT_RESULT', 'AFTER_VOTING', 'AFTER_ELECTION')
   candidates = array [candidate_id = Candidate.id, ...] unique...
   start_at = default null, datetime, if election has limit (when to start)
   end_at = default null, datetime, if election has limit (expiration)
   is_public = boolean, true default (if true = vote after sign-in, if false = can only vote if invited)
   electionInviteList_id = default null, otherwise int if is_public=false, ElectionInviteList.id
   deleted_at = datetime, default null
+
+  use python 3.10 enums
+
+  from enum import Enum, unique
+  @unique
+  class Mistake(Enum):
+      ONE = 'ONE'
+      TWO = 2
+
 
 
 ElectionInviteList
