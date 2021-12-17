@@ -1,4 +1,8 @@
+TODO: override, remove display of is_superuser users on any combobox/listbox
+
+
 TODO: python PIL, to verify if image is actual image
+
 
 from PIL import Image
 image = Image.open('')

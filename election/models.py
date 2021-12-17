@@ -28,6 +28,9 @@ class Election(DateTracking, CommonFields, models.Model):
     end_at = models.DateTimeField(null=True, blank=True)
     is_public = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
 
 class ElectionInvite(DateTracking, models.Model):
     owned_by = models.ForeignKey(to=Election, on_delete=models.CASCADE)
@@ -35,7 +38,9 @@ class ElectionInvite(DateTracking, models.Model):
 
 
 class CandidateGroup(DateTracking, CommonFields, models.Model):
-    pass
+
+    def __str__(self):
+        return self.name
 
 
 class Candidate(DateTracking, CommonFields, models.Model):
@@ -43,3 +48,6 @@ class Candidate(DateTracking, CommonFields, models.Model):
     linked_user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     candidate_group = models.ForeignKey(
         null=True, blank=True, to=CandidateGroup, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
