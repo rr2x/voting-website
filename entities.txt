@@ -22,40 +22,30 @@ User
 
 Election
   *
-  owner_id = User.id
+  created_by = User.id
   **
   election_type = enum ('SINGLE_CHOICE', 'MULTI_CHOICE', 'RANKED_CHOICE', 'INSTANT_RUNOFF', 'SINGLE_TRANSFER')
   result_type = enum ('CURRENT_RESULT', 'AFTER_VOTING', 'AFTER_ELECTION')
-  candidates = array [candidate_id = Candidate.id, ...] unique...
+  candidates = default to null, array [candidate_id = Candidate.id, ...] unique...
   start_at = default null, datetime, if election has limit (when to start)
   end_at = default null, datetime, if election has limit (expiration)
   is_public = boolean, true default (if true = vote after sign-in, if false = can only vote if invited)
-  electionInviteList_id = default null, otherwise int if is_public=false, ElectionInviteList.id
-  deleted_at = datetime, default null
-
-  use python 3.10 enums
-
-  from enum import Enum, unique
-  @unique
-  class Mistake(Enum):
-      ONE = 'ONE'
-      TWO = 2
-
-
-
-ElectionInviteList
-  *
-  election_id = Election.id
   invite_data (unique user_id)
     [{ user_id = User.id, status: { sent_at, accepted_at, declined_at }}]
+  deleted_at = datetime, default null
+
+
+
+
+
 
 
 Candidate
   *
-  election_id = Election.id (election who owns this candidate)
+  election = Election.id (election who owns this candidate)
   **
-  user_id = User.id (link to user)
-  candidateGroup_id = default null, CandidateGroup.id... if a candidate belongs to a group
+  user = User.id (link to user)
+  candidate_group = default null, CandidateGroup.id... if a candidate belongs to a group
   vote_data
     [{ user_id = User.id, voted_at, alt_value }]... alt_value = used for ranking, higher points = higher rank
     // can delete vote
@@ -66,3 +56,16 @@ CandidateGroup
   **
   candidate_data
     [{ candidate_id = Candidate.id }]
+
+
+
+relationships:
+  1 user (created_by) = multiple election event
+  1 election = many election invite
+  1 election invite = many user
+
+
+  ElectionInvite
+    <election name>   <target user>
+    election1         user1
+    election1         user2
