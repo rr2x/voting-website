@@ -6,8 +6,18 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User
 
 
-class UserCreationForm(forms.ModelForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+# create and update form similar in nature
+class UserForm(forms.ModelForm):
+
+    # show hash on edit mode
+    password = ReadOnlyPasswordHashField(
+        label=("Current Password"), help_text=(
+            "Passwords are securely hashed. "
+            "Cannot be decrypted."
+        ),)
+
+    password1 = forms.CharField(
+        label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Password Confirmation', widget=forms.PasswordInput)
 
@@ -32,28 +42,20 @@ class UserCreationForm(forms.ModelForm):
         return user
 
 
-# TODO: password update
-
-class UserChangeForm(forms.ModelForm):
-
-    # password = ReadOnlyPasswordHashField()
-
-    class Meta:
-        model = User
-        fields = ('email', 'password')
-
-
 class UserAdmin(BaseUserAdmin):
-    form = UserChangeForm
-    add_form = UserCreationForm
+    form = UserForm
+    add_form = UserForm
 
     list_display = ('email', 'is_verified', 'last_login', 'created_at',)
     list_filter = ('email',)
 
+    # edit mode
     fieldsets = (
-        (None, {'fields': ('email', 'password', 'is_verified')}),
+        (None, {'fields': ('email', 'password',
+         'password1', 'password2', 'is_verified')}),
     )
 
+    # add mode
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
@@ -66,8 +68,6 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
     # hide superuser from list of users
-    # if trying to update password within django admin, it will not proceed
-    # encrypted password
     def get_queryset(self, request):
         return super().get_queryset(request).filter(is_superuser=False)
 
