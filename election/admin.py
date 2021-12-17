@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Election, ElectionInvite
 
-# Register your models here.
+admin.site.register(Election)
+admin.site.register(ElectionInvite)

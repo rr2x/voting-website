@@ -1,0 +1,7 @@
+relationships:
+  1 user (own) many election
+  1 user (link) many candidate
+  1 election (link) many candidate
+  1 election invite (link) many election
+  many election invite (link) many user
+  1 candidate group (link) many candidate
