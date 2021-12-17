@@ -1,0 +1,19 @@
+TODO: python PIL, to verify if image is actual image
+
+from PIL import Image
+image = Image.open('')
+image.verify() # if exception then invalid image!
+https://pillow.readthedocs.io/en/stable/
+
+
+TODO: use scrypt, but need to install OpenSSL 1.1+
+PASSWORD_HASHERS = [
+   'django.contrib.auth.hashers.ScryptPasswordHasher',
+   'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+   'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+   'django.contrib.auth.hashers.Argon2PasswordHasher',
+   'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+]
+
+
+TODO: remove admin path (../x/) on deployment
