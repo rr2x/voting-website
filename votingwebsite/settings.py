@@ -36,6 +36,9 @@ AUTHENTICATION_BACKENDS = (
     ('django.contrib.auth.backends.ModelBackend'),
 )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 # TODO: use scrypt, but need to install OpenSSL 1.1+
 # PASSWORD_HASHERS = [
 #    'django.contrib.auth.hashers.ScryptPasswordHasher',
@@ -56,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication',
+    'election',
 ]
 
 MIDDLEWARE = [
