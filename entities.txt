@@ -17,6 +17,7 @@ User
   is_verified = boolean, email activation
   is_active = boolean, deactivate account
   is_superuser (if admin with root access) = boolean
+  ~ can add banning feature?
 
 
 Election
