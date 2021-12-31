@@ -35,19 +35,3 @@ class Election(DateTracking, CommonFields, models.Model):
 class ElectionInvite(DateTracking, models.Model):
     owned_by = models.ForeignKey(to=Election, on_delete=models.CASCADE)
     sent_to = models.ManyToManyField(User)
-
-
-class CandidateGroup(DateTracking, CommonFields, models.Model):
-
-    def __str__(self):
-        return self.name
-
-
-class Candidate(DateTracking, CommonFields, models.Model):
-    owned_by = models.ForeignKey(to=Election, on_delete=models.CASCADE)
-    linked_user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    candidate_group = models.ForeignKey(
-        null=True, blank=True, to=CandidateGroup, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
