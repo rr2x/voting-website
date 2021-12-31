@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Candidate, CandidateGroup
+from .models import Candidate, CandidateGroup, User
 
 
 class CandidateAdmin(admin.ModelAdmin):
-    # TODO: Linked User, remove superuser
-
-    def get_queryset(self, request):
-        return super().get_queryset(request).filter(is_superuser=False)
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "linked_user":
+            kwargs["queryset"] = User.objects.filter(is_superuser=False)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 admin.site.register(Candidate, CandidateAdmin)
