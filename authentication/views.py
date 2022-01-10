@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def welcometoauth(request):
-    return HttpResponse('yo')
+    return render(request, 'authentication/index.html')
