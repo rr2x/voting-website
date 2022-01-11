@@ -1,0 +1,5 @@
+>> python -Wa manage.py test
+>> python -m pip install -U Django # upgrade django
+>> pip freeze > requirements.txt
+>> python --version   # check python version
+>> python manage.py version   # check django version
