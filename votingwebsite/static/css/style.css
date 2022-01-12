@@ -25,6 +25,14 @@ body {
   overflow: hidden;
 }
 
+.s-upper-margin {
+  margin-top: 4rem !important;
+}
+
 /* auth- prefix for authentication */
+.auth-form-max-width {
+  width: 50%;
+}
+
 /* can- prefix for candidate */
 /* ele- prefix for election */

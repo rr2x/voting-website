@@ -8,93 +8,31 @@ Login
 
 {% block content %}
 
-  <div class="s-container">
+  <div class="s-container s-upper-margin">
     <h2 class="ui teal image header">
       <img src="{% static 'img/logo.png' %}" alt="" class="image">
       <div class="content">Login to Account</div>
     </h2>
-    <form class="ui form" method="post">
-      <div class="ui stacked segment">
-        <div class="ui stacked segment">
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="user icon"></i>
-              <input type="text" name="email" placeholder="E-mail address">
-            </div>
+    <form class="ui form auth-form-max-width" method="post">
+      <div class="ui segment">
+        <div class="ui field">
+          <label>Email</label>
+          <div class="ui left icon input">
+            <i class="envelope outline icon"></i>
+            <input type="email" name="email" placeholder="Email" maxlength="40">
           </div>
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Password">
-            </div>
-          </div>
-          <div class="ui fluid large teal submit button">Login</div>
         </div>
+        <div class="ui field">
+          <label>Password</label>
+          <div class="ui left icon input">
+            <input type="password" name="password" placeholder="Password"  maxlength="40">
+            <i class="ellipsis horizontal icon"></i>
+          </div>
+        </div>
+        <button class="ui button teal" type="submit">Login</button>
+        <button class="ui button right floated black">Sign Up</button>
+        <button class="ui button right floated">Forgot Password</button>
       </div>
     </form>
   </div>
-
-
-  <!-- <div class="ui middle aligned center aligned grid">
-    <div class="column">
-      <h2 class="ui teal image header">
-        <img src="{% static 'img/logo.png' %}" alt="" class="image">
-        <div class="content">Login to Account</div>
-      </h2>
-      <form class="ui large form" method="post">
-        <div class="ui stacked segment">
-          <div class="ui stacked segment">
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="user icon"></i>
-                <input type="text" name="email" placeholder="E-mail address">
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="lock icon"></i>
-                <input type="password" name="password" placeholder="Password">
-              </div>
-            </div>
-            <div class="ui fluid large teal submit button">Login</div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div> -->
-
-  <!-- <div class="ui middle aligned center aligned grid">
-    <div class="column">
-      <h2 class="ui teal image header">
-        <img src="assets/images/logo.png" class="image">
-        <div class="content">
-          Log-in to your account
-        </div>
-      </h2>
-      <form class="ui large form">
-        <div class="ui stacked segment">
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="user icon"></i>
-              <input type="text" name="email" placeholder="E-mail address">
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Password">
-            </div>
-          </div>
-          <div class="ui fluid large teal submit button">Login</div>
-        </div>
-
-        <div class="ui error message"></div>
-
-      </form>
-
-      <div class="ui message">
-        New to us? <a href="#">Sign Up</a>
-      </div>
-    </div>
-  </div> -->
 {% endblock content %}
