@@ -19,24 +19,60 @@ Sign Up
           <label>Email</label>
           <div class="ui left icon input">
             <i class="envelope outline icon"></i>
-            <input type="email" name="email" placeholder="Email" maxlength="40">
+            <input type="email" name="email" value="{{data.email}}" placeholder="Email" maxlength="40">
           </div>
+          {% if has_error_email %}
+            <div class="ui red message">
+              <ul class="list">
+                {% for message in messages %}
+                  {% if 'email_error' in message.extra_tags %}
+                  <li>
+                    {{message}}
+                  </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
         </div>
         <div class="ui field">
           <label>Password</label>
           <div class="ui left icon input">
-            <input type="password" name="password" placeholder="Password"  maxlength="40">
             <i class="ellipsis horizontal icon"></i>
+            <input type="password" name="password" placeholder="Password" maxlength="40">
           </div>
+          {% if has_error_password %}
+            <div class="ui red message">
+              <ul class="list">
+                {% for message in messages %}
+                  {% if 'password_error' in message.extra_tags %}
+                  <li>
+                    {{message}}
+                  </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
         </div>
         <div class="ui field">
           <label>Confirm Password</label>
           <div class="ui left icon input">
-            <input type="password" name="password" placeholder="Password"  maxlength="40">
             <i class="ellipsis horizontal icon"></i>
+            <input type="password" name="password2" placeholder="Repeat Password" maxlength="40">
           </div>
         </div>
-        <div class="ui field s-upper-padding-05rem">
+        <!-- TODO: account created message does not show -->
+        <div class="s-upper-padding-05rem">
+          {% if account_created %}
+            <div class="ui blue message">
+              {% for message in messages %}
+                  {% if 'account_created' in message.extra_tags %}
+                    {{message}}
+                  {% endif %}
+                {% endfor %}
+            </div>
+          {% endif %}
         </div>
         <button class="ui button teal" type="submit">Sign Up</button>
         <a href={% url 'frontpage' %} class="ui button">Back to Frontpage</a>
