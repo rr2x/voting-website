@@ -1,0 +1,82 @@
+{% extends "_partials/base.html" %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+  <div class="s-container s-upper-margin-4rem">
+    <h2 class="ui teal image header">
+      <img src="{% static 'img/logo.png' %}" alt="" class="image">
+      <div class="content">Account Sign Up</div>
+    </h2>
+    <form class="ui form auth-form-max-width" method="post">
+      {% csrf_token %}
+      <div class="ui segment">
+        <div class="ui field">
+          <label>Email</label>
+          <div class="ui left icon input">
+            <i class="envelope outline icon"></i>
+            <input type="email" name="email" value="{{data.email}}" placeholder="Email" maxlength="40">
+          </div>
+          {% if has_error_email %}
+            <div class="ui red message">
+              <ul class="list">
+                {% for message in messages %}
+                  {% if 'email_error' in message.extra_tags %}
+                  <li>
+                    {{message}}
+                  </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+        <div class="ui field">
+          <label>Password</label>
+          <div class="ui left icon input">
+            <i class="ellipsis horizontal icon"></i>
+            <input type="password" name="password" placeholder="Password" maxlength="40">
+          </div>
+          {% if has_error_password %}
+            <div class="ui red message">
+              <ul class="list">
+                {% for message in messages %}
+                  {% if 'password_error' in message.extra_tags %}
+                  <li>
+                    {{message}}
+                  </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+        <div class="ui field">
+          <label>Confirm Password</label>
+          <div class="ui left icon input">
+            <i class="ellipsis horizontal icon"></i>
+            <input type="password" name="password2" placeholder="Repeat Password" maxlength="40">
+          </div>
+        </div>
+        <!-- TODO: account created message does not show -->
+        <div class="s-upper-padding-05rem">
+          {% if account_created %}
+            <div class="ui blue message">
+              {% for message in messages %}
+                  {% if 'account_created' in message.extra_tags %}
+                    {{message}}
+                  {% endif %}
+                {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <button class="ui button teal" type="submit">Sign Up</button>
+        <a href={% url 'frontpage' %} class="ui button">Back to Frontpage</a>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

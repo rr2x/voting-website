@@ -13,6 +13,7 @@ body {
   background-color: #dadada;
 }
 
+/* s- prefix as main style */
 .s-container {
   display: flex;
   flex-direction: column;
@@ -23,3 +24,19 @@ body {
   padding: 0 2rem;
   overflow: hidden;
 }
+
+.s-upper-margin-4rem {
+  margin-top: 4rem !important;
+}
+
+.s-upper-padding-05rem {
+  padding-top: 0.5rem !important;
+}
+
+/* auth- prefix for authentication */
+.auth-form-max-width {
+  width: 50%;
+}
+
+/* can- prefix for candidate */
+/* ele- prefix for election */
