@@ -7,8 +7,21 @@ def welcometoauth(request):
 
 
 def login(request):
-
     if request.method == 'POST':
         return redirect(reverse('frontpage'))
 
     return render(request, 'authentication/login.html')
+
+
+def signup(request):
+    if request.method == 'POST':
+        return redirect(reverse('frontpage'))
+
+    return render(request, 'authentication/signup.html')
+
+
+def resetpassword(request):
+    if request.method == 'POST':
+        return redirect(reverse('frontpage'))
+
+    return render(request, 'authentication/resetpassword.html')
