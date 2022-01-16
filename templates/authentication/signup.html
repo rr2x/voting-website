@@ -62,7 +62,6 @@ Sign Up
             <input type="password" name="password2" placeholder="Repeat Password" maxlength="40">
           </div>
         </div>
-        <!-- TODO: account created message does not show -->
         <div class="s-upper-padding-05rem">
           {% if account_created %}
             <div class="ui blue message">
@@ -74,6 +73,7 @@ Sign Up
             </div>
           {% endif %}
         </div>
+        <br/>
         <button class="ui button teal" type="submit">Sign Up</button>
         <a href={% url 'frontpage' %} class="ui button">Back to Frontpage</a>
       </div>

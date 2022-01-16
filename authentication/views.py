@@ -53,6 +53,8 @@ def signup(request):
                              'Account created, please confirm via email', extra_tags="account_created")
         context['account_created'] = True
 
+        return render(request, 'authentication/signup.html', context)
+
     return render(request, 'authentication/signup.html')
 
 
