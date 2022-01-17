@@ -17,7 +17,7 @@ def login(request):
 
         user = authenticate(request, username=email, password=password)
 
-        if not user:
+        if not user or user.is_superuser or not user.is_active:
             messages.add_message(request, messages.ERROR,
                                  'Account not found or invalid credentials')
             context['has_error'] = True
@@ -29,6 +29,7 @@ def login(request):
             context['has_error'] = True
             return render(request, 'authentication/login.html', context)
 
+        # TODO: redirect to private page (dashboard)
         return redirect(reverse('frontpage'))
 
     return render(request, 'authentication/login.html')

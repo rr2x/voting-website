@@ -78,13 +78,13 @@ class UserAdmin(BaseUserAdmin):
     form = UserFormEdit
     add_form = UserFormAdd
 
-    list_display = ('email', 'is_verified', 'last_login', 'created_at',)
+    list_display = ('email', 'is_verified', 'is_active', 'last_login', 'created_at',)
     list_filter = ('email',)
 
     # edit mode
     fieldsets = (
         (None, {'fields': ('email', 'password',
-         'password1', 'password2', 'is_verified')}),
+         'password1', 'password2', 'is_verified', 'is_active')}),
     )
 
     # add mode
