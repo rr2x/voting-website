@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import authenticate
 from django.urls import reverse
 from validate_email import validate_email
 from .models import User
@@ -7,6 +8,27 @@ from .models import User
 
 def login(request):
     if request.method == 'POST':
+
+        context = {'has_error': False,
+                   'data': request.POST}
+
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=email, password=password)
+
+        if not user:
+            messages.add_message(request, messages.ERROR,
+                                 'Account not found or invalid credentials')
+            context['has_error'] = True
+            return render(request, 'authentication/login.html', context)
+
+        if not user.is_verified:
+            messages.add_message(request, messages.ERROR,
+                                 'Check your email to verify account')
+            context['has_error'] = True
+            return render(request, 'authentication/login.html', context)
+
         return redirect(reverse('frontpage'))
 
     return render(request, 'authentication/login.html')

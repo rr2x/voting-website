@@ -19,7 +19,7 @@ Login
           <label>Email</label>
           <div class="ui left icon input">
             <i class="envelope outline icon"></i>
-            <input type="email" name="email" placeholder="Email" maxlength="40">
+            <input type="email" name="email" value="{{data.email}}" placeholder="Email" maxlength="40">
           </div>
         </div>
         <div class="ui field">
@@ -30,7 +30,15 @@ Login
           </div>
         </div>
         <div class="ui field s-upper-padding-05rem">
+          {% if has_error %}
+            <div class="ui red message">
+              {% for message in messages %}
+                {{message}}
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
+        <br/>
         <button class="ui button teal" type="submit">Login</button>
         <a href={% url 'auth-signup' %} class="ui button right floated black">Sign Up</a>
         <a href={% url 'auth-resetpassword' %} class="ui button right floated">Reset Password</a>

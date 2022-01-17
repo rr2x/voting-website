@@ -66,10 +66,10 @@ Sign Up
           {% if account_created %}
             <div class="ui blue message">
               {% for message in messages %}
-                  {% if 'account_created' in message.extra_tags %}
-                    {{message}}
-                  {% endif %}
-                {% endfor %}
+                {% if 'account_created' in message.extra_tags %}
+                  {{message}}
+                {% endif %}
+              {% endfor %}
             </div>
           {% endif %}
         </div>
