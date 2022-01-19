@@ -12,3 +12,10 @@ urlpatterns = [
 
 handler404 = 'utilities.views.handle_404'
 handler500 = 'utilities.views.handle_500'
+
+# links
+# .../auth/ = authentication
+# .../c/ = candidate (view profile)
+# .../e/ = election (management)
+# .../public-election/ = public election
+# .../private-election/ = private election
