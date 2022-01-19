@@ -1,0 +1,13 @@
+{% extends "_partials/base.html" %}
+
+{% block title %}
+Welcome to Voting Website
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+  = welcome to dashboard =
+  <br/>
+  <a href={% url 'auth-logout-url' %}>Log Out</a>
+{% endblock content %}

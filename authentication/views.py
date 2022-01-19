@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.urls import reverse
 from validate_email import validate_email
 from .models import User
 
+from utilities.decorators import auth_user_should_not_access
 
+
+@auth_user_should_not_access
 def login(request):
     if request.method == 'POST':
 
@@ -29,12 +32,14 @@ def login(request):
             context['has_error'] = True
             return render(request, 'authentication/login.html', context)
 
-        # TODO: redirect to private page (dashboard)
-        return redirect(reverse('frontpage'))
+        auth_login(request, user)
+
+        return redirect(reverse('main-dashboard-url'))
 
     return render(request, 'authentication/login.html')
 
 
+@auth_user_should_not_access
 def signup(request):
     if request.method == 'POST':
         context = {'has_error_password': False,
@@ -76,13 +81,21 @@ def signup(request):
                              'Account created, please confirm via email', extra_tags="account_created")
         context['account_created'] = True
 
+        # TODO: verification email, use mailtrap, then if not development use actual email sending
+
         return render(request, 'authentication/signup.html', context)
 
     return render(request, 'authentication/signup.html')
 
 
+# TODO: reset pass
 def resetpassword(request):
     if request.method == 'POST':
-        return redirect(reverse('frontpage'))
+        return redirect(reverse('main-frontpage-url'))
 
     return render(request, 'authentication/resetpassword.html')
+
+
+def logout(request):
+    auth_logout(request)
+    return render(request, 'authentication/logout.html')
