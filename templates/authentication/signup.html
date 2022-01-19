@@ -62,20 +62,20 @@ Sign Up
             <input type="password" name="password2" placeholder="Repeat Password" maxlength="40">
           </div>
         </div>
-        <!-- TODO: account created message does not show -->
         <div class="s-upper-padding-05rem">
           {% if account_created %}
             <div class="ui blue message">
               {% for message in messages %}
-                  {% if 'account_created' in message.extra_tags %}
-                    {{message}}
-                  {% endif %}
-                {% endfor %}
+                {% if 'account_created' in message.extra_tags %}
+                  {{message}}
+                {% endif %}
+              {% endfor %}
             </div>
           {% endif %}
         </div>
+        <br/>
         <button class="ui button teal" type="submit">Sign Up</button>
-        <a href={% url 'frontpage' %} class="ui button">Back to Frontpage</a>
+        <a href={% url 'main-frontpage-url' %} class="ui button">Back to Frontpage</a>
       </div>
     </form>
   </div>
