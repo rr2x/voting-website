@@ -1,4 +1,7 @@
-TODO: override, remove display of is_superuser users on any combobox/listbox
+
+TODO: create accounts for testing, posted at login page
+TODO: payment area, stripe test account credit card info
+
 
 
 TODO: python PIL, to verify if image is actual image
