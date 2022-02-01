@@ -3,6 +3,7 @@ from django.contrib.auth.hashers import check_password
 from .models import User
 
 
+# override django.contrib.auth.authenticate() used at login
 class EmailBackend(BaseBackend):
     def authenticate(self, request, username=None, password=None):
 

@@ -93,6 +93,7 @@ def signup(request):
 
 
 # TODO: reset pass
+@auth_user_should_not_access
 def resetpassword(request):
     if request.method == 'POST':
         return redirect(reverse('main-frontpage-url'))
