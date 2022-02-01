@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #dadada;
+  background-color: #332c2c;
 }
 
 /* s- prefix as main style */
@@ -36,6 +36,10 @@ body {
 /* auth- prefix for authentication */
 .auth-form-max-width {
   width: 50%;
+}
+
+.auth-body {
+  overflow: hidden;
 }
 
 /* can- prefix for candidate */

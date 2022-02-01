@@ -8,6 +8,10 @@ from .models import User
 from utilities.decorators import auth_user_should_not_access
 
 
+def auth(request):
+    return redirect(reverse('main-frontpage-url'))
+
+
 @auth_user_should_not_access
 def login(request):
     if request.method == 'POST':
