@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #dadada;
+  background-color: #332c2c;
 }
 
 /* s- prefix as main style */
@@ -33,9 +33,42 @@ body {
   padding-top: 0.5rem !important;
 }
 
+.s-sections {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 !important;
+}
+
+.s-first-section {
+  background: url('../img/section1.jpg') center center/cover !important;
+}
+
+.s-second-section {
+  background: url('../img/section2.jpg') center center/cover !important;
+  height: 50% !important;
+}
+
+.s-third-section {
+  background: url('../img/section3.jpg') center center/cover !important;
+  height: 50% !important;
+}
+
+.s-fourth-section {
+  background: url('../img/section4.jpg') center center/cover !important;
+  height: 50% !important;
+}
+
+.s-fifth-section {
+  height: 15% !important;
+}
+
 /* auth- prefix for authentication */
 .auth-form-max-width {
   width: 50%;
+}
+
+.auth-body {
+  overflow: hidden;
 }
 
 /* can- prefix for candidate */
